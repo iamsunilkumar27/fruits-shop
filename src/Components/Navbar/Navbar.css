@@ -1,0 +1,17 @@
+.search{
+    height: 40px !important;
+    margin-top: 15px;
+}
+.login{
+    outline: none !important;
+}
+@media only screen and (max-width: 764px) {
+    .search {
+     width: 50%;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .search {
+     width: auto;
+    }
+  }
