@@ -1,0 +1,9 @@
+.height{
+    height: 40rem;
+}
+@media only screen and (max-width: 500px) {
+    .height {
+     height: 25rem;
+     margin-top: 10px;
+    }
+  }
