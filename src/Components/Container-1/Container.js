@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -7,37 +7,18 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
-import img from './delivery boy.png';
-
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
+        minWidth: 250,
         maxWidth: 300,
     },
-    chips: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    chip: {
-        margin: 2,
-    },
-    noLabel: {
-        marginTop: theme.spacing(3),
-    },
+    // noLabel: {
+    //     marginTop: theme.spacing(3),
+    // },
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
 
 const names = [
     'Fruits',
@@ -51,123 +32,119 @@ const names = [
 
 function MultipleSelect() {
     const classes = useStyles();
-    const [personName, setPersonName] = React.useState([]);
-
+    const [personName, setPersonName] = useState([]);
+    const [data, setData] = useState([]);
     const handleChange = (event) => {
         setPersonName(event.target.value);
     };
 
 
+    useEffect(() => {
+        getData();
+
+    },[]);
+
+    const getData = async () => {
+        try {
+            const result = await axios.get('https://test.sunnybee.in/Cron/productList')
+            const value = result.data.product_list;
+            // const homeContent = value.slice(0,3)
+            setData(value)
+            // console.log(homeContent)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    console.log(data);
+
+
+
     return (
-        <div className='container  d-block d-md-flex justify-content-between my-5'>
+        <div className='container my-4'>
+            <div className="row">
 
-            <div>
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-mutiple-checkbox-label">Categories</InputLabel>
-                    <Select
-                        labelId="demo-mutiple-checkbox-label"
-                        id="demo-mutiple-checkbox"
-                        multiple
-                        value={personName}
-                        onChange={handleChange}
-                        input={<Input />}
-                        renderValue={(selected) => selected.join(', ')}
-                        MenuProps={MenuProps}
-                    >
-                        {names.map((name) => (
-                            <MenuItem key={name} value={name}>
-                                <Checkbox checked={personName.indexOf(name) > -1} />
-                                <ListItemText primary={name} />
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
-            </div>
-            <div className=' ms-sm-1 ms-md-5 '>
-                <div className='d-flex justify-content-between'>
-                    <h3>
-                        Category Name
-                    </h3>
-                    <a className="nav-link dropdown-toggle btn   border border-dark text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sort By
-                    </a>
+                <div className="col-12 col-lg-4 my-2">
+                    <FormControl variant='outlined' className={classes.formControl}>
+                        <InputLabel id="demo-multiple-checkbox-label">Categories</InputLabel>
+                        <Select
+                            labelId="demo-multiple-checkbox-label"
+                            id="demo-multiple-checkbox"
+                            multiple
+                            value={personName}
+                            onChange={handleChange}
+                            input={<Input />}
+                            renderValue={(selected) => selected.join(', ')}
+                        >
+                            {names.map((name) => (
+                                <MenuItem key={name} value={name}>
+                                    <Checkbox checked={personName.indexOf(name) > -1} />
+                                    <ListItemText primary={name} />
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                 </div>
-                <div className='d-flex flex-wrap my-5'>
-                    <div className='row'>
-
-                        <div className="card shadow-sm col-md-3   mx-4">
-                            <div className="card-body">
-                                <h5 className="card-title btn border border-dark ">Label</h5>
-                            </div>
-                            <div>
-                                <img className='text-center' src={img}></img>
-                            </div>
-                            <div className='d-flex justify-content-between'>
-                                <div>
-                                    <p>
-                                        Name
-                                    </p>
-                                    <p>
-                                        Price
-                                    </p>
-                                </div>
-                                <div className='d-flex justify-content-center align-items-center px-4'>
-                                    <button className='btn btn border border-dark '>Add</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="card shadow-sm col-md-3 mx-4">
-                            <div className="card-body">
-                                <h5 className="card-title btn border border-dark ">Label</h5>
-                            </div>
-                            <div>
-                                <img className='text-center' src={img}></img>
-                            </div>
-                            <div className='d-flex justify-content-between'>
-                                <div>
-                                    <p>
-                                        Name
-                                    </p>
-                                    <p>
-                                        Price
-                                    </p>
-                                </div>
-                                <div className='d-flex justify-content-center align-items-center px-4'>
-                                    <button className='btn btn border border-dark '>Add</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="card shadow-sm col-md-3 mx-4">
-                            <div className="card-body">
-                                <h5 className="card-title btn border border-dark ">Label</h5>
-                            </div>
-                            <div>
-                                <img className='text-center' src={img}></img>
-                            </div>
-                            <div className='d-flex justify-content-between'>
-                                <div>
-                                    <p>
-                                        Name
-                                    </p>
-                                    <p>
-                                        Price
-                                    </p>
-                                </div>
-                                <div className='d-flex justify-content-center align-items-center px-4'>
-                                    <button className='btn btn border border-dark '>Add</button>
-                                </div>
-                            </div>
-
-
-                        </div>
+                <div className='col-12 col-lg-8 border border-dark my-2'>
+                    <div className='d-flex justify-content-between'>
+                        <h3 className='p-2'>
+                            Category Name
+                        </h3>
+                     
+                        <div className="form-floating">
+      <select className="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+      {
+          data.map((x) => {
+return (
+    <option value="1" key={x.id}>{x.product_sub_category}</option>
+)
+          })
+      }
+      </select>
+      <label for="floatingSelectGrid">Sort By</label>
+    </div>
                     </div>
+                    {/* card section */}
+                    <div className='row my-4' style={{maxHeight: '490px'}, {overflow: 'auto'}}>
 
+                        {
+                            data.map((x) => {
+                                return (
+                                    <div className="card shadow-sm col-md-6 col-lg-4 my-3">
+                                        <div className="card-body">
+                                            <h5 className="card-title btn border border-dark ">Label</h5>
+                                        </div>
+                                        <div>
+                                            <img className='text-center w-100 h-100' src={x.image_url}></img>
+                                        </div>
+                                        <div className='d-flex justify-content-between'>
+                                            <div>
+                                                <p>
+                                                    {
+                                                        x.app_display_name
+                                                    }
+                                                </p>
+                                                <p>
+                                                <span>$ : </span>
+                                                   {
+                                                    x.product_selling_price
+                                                   }
+                                                </p>
+                                            </div>
+                                            <div className='d-flex justify-content-center align-items-center px-4'>
+                                                <button className='btn btn border border-dark '>Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                );
+
+                            })
+                        }
+                    </div>
                 </div>
+
+
             </div>
-
-
 
         </div>
     );

@@ -1,6 +1,6 @@
 import Google from './google.png';
 import logo from './logo.png';
-import './Footer.css'
+import './Footer.css';
 function Footer (){
     return (
         <div className='container-fluid footer-'>
