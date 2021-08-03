@@ -13,14 +13,14 @@ function Footer (){
                         <p className='mt-2'>Address :<span> Sri rama kuppam</span></p>
                     </div>
                 </div>
-                <div className='col-12 col-md-4 pt-md-5'>
+                <div className='col-6 col-md-4 pt-md-5'>
                     <p>About</p>
                      <p>Info</p>
                      <p>Carriers</p>
                      <p>Stroes</p>
                      <p>Policies</p>
                 </div>
-                <div className='col-12 col-md-4 pt-md-5 '>
+                <div className='col-6 col-md-4 pt-md-5 '>
                     <p>Download Our App</p>
                     <div>
                    <a href='https://chrome.google.com/webstore/category/extensions' target='_blank'> <img src={Google} height='47px' width='150px'></img></a>

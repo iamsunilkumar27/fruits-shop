@@ -43,7 +43,7 @@ function MultipleSelect() {
     useEffect(() => {
         getData();
 
-    },[]);
+    }, []);
 
     const getData = async () => {
         try {
@@ -90,19 +90,19 @@ function MultipleSelect() {
                         <h3 className='p-2'>
                             Category Name
                         </h3>
-                     
-                        <div className="form-floating">
-      <select className="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-      {
-          data.map((x) => {
-return (
-    <option value="1" key={x.id}>{x.product_sub_category}</option>
-)
-          })
-      }
-      </select>
-      <label for="floatingSelectGrid">Sort By</label>
-    </div>
+
+                        <div className="form-floating mt-2">
+                            <select className="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                                {
+                                    data.map((x) => {
+                                        return (
+                                            <option value="1" key={x.id}>{x.product_sub_category}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                            <label for="floatingSelectGrid">Sort By</label>
+                        </div>
                     </div>
                     {/* card section */}
                     <div className='row my-4 card-section' >
@@ -125,10 +125,10 @@ return (
                                                     }
                                                 </p>
                                                 <p>
-                                                <span>$ : </span>
-                                                   {
-                                                    x.product_selling_price
-                                                   }
+                                                    <span>$ : </span>
+                                                    {
+                                                        x.product_selling_price
+                                                    }
                                                 </p>
                                             </div>
                                             <div className='d-flex justify-content-center align-items-center px-4'>
