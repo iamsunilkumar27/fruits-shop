@@ -18,7 +18,7 @@ function Navbar() {
                                 </a>
                             </li>
                         </ul>
-                        <form className="d-md-flex pe-lg-5 me-lg-5">
+                        <form className="d-md-flex pe-lg-4 me-lg-4">
                             <div className='d-flex search'>
                                 <input className="form-control me-2 " type="search" placeholder="Search" aria-label="Search" />
                                 <button className="btn btn-outline-primary" type="submit">Search</button>                            </div>
@@ -37,12 +37,23 @@ function Navbar() {
                 </div>
             </nav>
 
-            <nav className="navbar d-none d-md-block navbar-light bg-light">
+            <nav className="navbar d-none d-md-block navbar-light bg-light ps-lg-5 ">
                 <div className="container-fluid">
-                    <a className="navbar-brand">Navbar</a>
-                    <form className="d-flex  pe-lg-5 me-lg-5">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    <a className="navbar-brand">Store Location</a>
+                    <form className="d-flex  pe-lg-4 me-lg-4">
+                        <div>
+                            <a className='text-decoration-none text-body m-3 btn ' href='#' >Home</a>
+                        </div>
+                        <div>
+                            <a className='text-decoration-none text-body m-3 btn ' href='#' >About Us</a>
+                        </div>
+                        <div>
+                            <a className='text-decoration-none text-body m-3 btn ' href='#' >Cotact</a>
+                        </div>
+                        <div>
+                            <a className='text-decoration-none text-body m-3 btn ' href='#' >My Account</a>
+                        </div>
+
                     </form>
                 </div>
             </nav>
