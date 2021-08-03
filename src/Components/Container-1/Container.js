@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import './Container.css';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -104,7 +105,7 @@ return (
     </div>
                     </div>
                     {/* card section */}
-                    <div className='row my-4' style={{maxHeight: '490px'}, {overflow: 'auto'}}>
+                    <div className='row my-4 card-section' >
 
                         {
                             data.map((x) => {
