@@ -95,7 +95,7 @@ function MultipleSelect() {
                 <div className='d-flex flex-wrap my-5'>
                     <div className='row'>
 
-                        <div className="card col-md-3   mx-4">
+                        <div className="card shadow-sm col-md-3   mx-4">
                             <div className="card-body">
                                 <h5 className="card-title btn border border-dark ">Label</h5>
                             </div>
@@ -117,7 +117,7 @@ function MultipleSelect() {
                             </div>
 
                         </div>
-                        <div className="card col-md-3 mx-4">
+                        <div className="card shadow-sm col-md-3 mx-4">
                             <div className="card-body">
                                 <h5 className="card-title btn border border-dark ">Label</h5>
                             </div>
@@ -139,7 +139,7 @@ function MultipleSelect() {
                             </div>
 
                         </div>
-                        <div className="card col-md-3 mx-4">
+                        <div className="card shadow-sm col-md-3 mx-4">
                             <div className="card-body">
                                 <h5 className="card-title btn border border-dark ">Label</h5>
                             </div>
